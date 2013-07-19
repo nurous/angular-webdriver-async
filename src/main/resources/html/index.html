@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html id="ng-app" ng-app="myApp">
+<head>
+
+</head>
+<body>
+
+<div id="content" ng-controller="GitHubController">
+    <form ng-submit="search()">
+        <label for="searchBox">GitHub repository search</label>
+        <input id="searchBox" type="text" ng-model="searchTerms"/>
+
+        <input type="submit" value="Search"/>
+    </form>
+
+    <div class="repositories" ng-hide="repositories.length == 0">
+        <table>
+            <thead>
+            <tr>
+                <th>Repository</th>
+                <th>Description</th>
+                <th>Language</th>
+                <th>Last Updated</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="repo in repositories">
+                <td><a href="{{repo.url}}">{{repo.owner}}/{{repo.name}}</a></td>
+                <td>{{repo.description}}</td>
+                <td>{{repo.language}}</td>
+                <td>{{repo.pushed_at}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="../javascript/lib/n.min.js"></script>
+<script src="../javascript/lib/angular-1.0.7.min.js"></script>
+<script src="../javascript/lib/angular-resource-1.0.7.min.js"></script>
+<script src="../javascript/lib/underscore-min.1.4.4.js"></script>
+<script src="../javascript/resources.js"></script>
+<script src="../javascript/controllers.js"></script>
+<script src="../javascript/app.js"></script>
+
+<!-- Needed for WebDriver automated testing -->
+<script src="../javascript/ajaxFinished.js"></script>
+
+</body>
+</html>
